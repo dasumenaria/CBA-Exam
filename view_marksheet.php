@@ -438,83 +438,88 @@ $CuttentStatust=mysql_query("select `roman` from `master_class` where `id`='$cla
 				<td width="63%">
 					<table width="100%"  cellspacing="0px" cellpadding="0px" border="1">
 						<tr class="header_font">
-							 <th style="height:45px" >Report B - Attendance</th>
-							 <?php 
-							$st=mysql_query("select DISTINCT(term) from `attendance` where `scholar_no`='$scholar_no' ");
-							while($ft=mysql_fetch_array($st))
-							{
-								$heading_term=$ft['term'];
-								$st3=mysql_query("select `name` from `master_term` where `id`='$heading_term'");
-								$ft3=mysql_fetch_array($st3);
-								$heading_name=$ft3['name'];
-								?>
-								<th ><?php echo $heading_name; ?></th>
-								<?php
-							}
-							?>
-							<th>Over All</th>
+							<th style="height:45px" >Report B - Attendance</th>
+							<th>Term-I</th>  
+							<th>Term-II</th>  
+							<th>Overas</th>   
 						 </tr>
 						 <tr>
 							<th style="height:45px" class="header_sub">Number of Meetings</th>
-							<?php 
-							$totalAttend=0;
-							$st=mysql_query("select DISTINCT(term) from `attendance` where `scholar_no`='$scholar_no' ");
-							while($ft=mysql_fetch_array($st))
-							{
-								$heading_term=$ft['term'];
+								<?php 
+								$heading_term=1;
 								$st3=mysql_query("select `max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
 								$ft3=mysql_fetch_array($st3);
 								$max_attendance=$ft3['max_attendance'];
-								$totalAttend+=$max_attendance;
 								?>
-								<th><?php echo $max_attendance; ?></th>
-								<?php
-							}
-							?>
-							<th><?php echo $totalAttend;?></th>
+							<th><?php echo $max_attendance; ?></th>
+								<?php 
+								$heading_term=2;
+								$st3=mysql_query("select `max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$max_attendance=$ft3['max_attendance'];
+								?>
+							<th><?php echo $max_attendance; ?></th>
+								<?php 
+								$heading_term=3;
+								$st3=mysql_query("select `max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$max_attendance=$ft3['max_attendance'];
+								?>
+							<th><?php echo $max_attendance; ?></th>
 						 </tr>
 						 <tr>
 							<th style="height:45px" class="header_sub" >No. of Meetings <br> on work present</th>
-							<?php 
-							$totalAttendP=0;
-							$st=mysql_query("select DISTINCT(term) from `attendance` where `scholar_no`='$scholar_no' ");
-							while($ft=mysql_fetch_array($st))
-							{
-								$heading_term=$ft['term'];
+								<?php 
+								$heading_term=1;
 								$st3=mysql_query("select `attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
 								$ft3=mysql_fetch_array($st3);
 								$attendance=$ft3['attendance'];
-								$totalAttendP+=$attendance;
 								?>
-								<th><?php echo $attendance; ?></th>
-								<?php
-							}
-							?>
-							<th><?php echo $totalAttendP;?></th>
+							<th><?php echo $attendance; ?></th>
+								<?php 
+								$heading_term=2;
+								$st3=mysql_query("select `attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$attendance=$ft3['attendance'];
+								?>
+							<th><?php echo $attendance; ?></th>
+								<?php 
+								$heading_term=3;
+								$st3=mysql_query("select `attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$attendance=$ft3['attendance'];
+								?>
+							<th><?php echo $attendance; ?></th>
 						 </tr>
 						 <tr>
 							<th style="height:40px" class="header_sub" >Percentage</th>
-							<?php 
-							$totalAttendP=0;
-							$totalAttendPGET=0;
-							$st=mysql_query("select DISTINCT(term) from `attendance` where `scholar_no`='$scholar_no' ");
-							while($ft=mysql_fetch_array($st))
-							{
-								$heading_term=$ft['term'];
-								$st3=mysql_query("select `attendance`,`max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'	");
+								<?php 
+								$heading_term=1;
+								$st3=mysql_query("select `attendance`,`max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
 								$ft3=mysql_fetch_array($st3);
 								$attendance=$ft3['attendance'];
 								$max_attendance=$ft3['max_attendance'];
-								$totalAttendP+=$attendance;
-								$totalAttendPGET+=$max_attendance;
 								$GetPercentageAttend=(($attendance/$max_attendance)*100);
 								?>
-								<th><?php echo round($GetPercentageAttend , 2 ); ?>%</th>
-								<?php
-							}
-							$GetPercentageAttendOverAll=(($totalAttendP/$totalAttendPGET)*100);
-							?>
-							<th><?php echo round($GetPercentageAttendOverAll , 2);?>%</th>
+							<th><?php echo round($GetPercentageAttend , 2 ); ?>%</th>
+								<?php 
+								$heading_term=2;
+								$st3=mysql_query("select `attendance`,`max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$attendance=$ft3['attendance'];
+								$max_attendance=$ft3['max_attendance'];
+								$GetPercentageAttend=(($attendance/$max_attendance)*100);
+								?>
+							<th><?php echo round($GetPercentageAttend , 2 ); ?>%</th>
+								<?php 
+								$heading_term=3;
+								$st3=mysql_query("select `attendance`,`max_attendance` from `attendance` where `term`='$heading_term' && `scholar_no`='$scholar_no'");
+								$ft3=mysql_fetch_array($st3);
+								$attendance=$ft3['attendance'];
+								$max_attendance=$ft3['max_attendance'];
+								$GetPercentageAttend=(($attendance/$max_attendance)*100);
+								?>
+							<th><?php echo round($GetPercentageAttend , 2 ); ?>%</th>
 						 </tr>
 					</table>
 				</td>

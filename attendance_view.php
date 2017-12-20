@@ -91,26 +91,17 @@ $exam_id=$_POST['exm'];
 								Please select Section category</span>
 							</div>
 						</div>
-				</div>		
-				 
-				   
+					</div>		
 						<div class="form-group">
 							<label class="control-label col-md-3">Exam</label>
 							<div class="col-md-4">
 							   <div class="input-icon right">
 									<i class="fa"></i>
 									<select class="form-control ust" required name="exm">
-										<option value="">---Select Exam---</option>
-											<?php 
-												$query2=mysql_query("select * from `master_term` ORder By `id`"); 
-												while($fetch2=mysql_fetch_array($query2))
-												{
-													$i++;
-													$ex_id=$fetch2['id'];
-													$exam_name=$fetch2['name'];
-												?>
-												<option value="<?php echo $ex_id; ?>"><?php echo $exam_name; ?></option>
-											<?php } ?>
+										<option value="">---Select---</option>
+										<option value="1">Term-I</option>
+										<option value="2">Term-II</option>
+										<option value="3">Overas</option>	
 									</select>
 								</div>
 								<span class="help-block">

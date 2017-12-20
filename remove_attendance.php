@@ -14,9 +14,7 @@ $term_id=$_POST['exm'];
 	{
 		$scholar_no=$fect['scholar_no'];
  		mysql_query("delete from `attendance` where `scholar_no`='$scholar_no' && `term`='$term_id'");
-		
 	}
-
 }
 
 
@@ -99,16 +97,10 @@ $term_id=$_POST['exm'];
 							   <div class="input-icon right">
 									<i class="fa"></i>
 									<select class="form-control" required name="exm">
-									<option value="">---Select Term---</option>
-								    <?php 
-									$query2=mysql_query("select * from `master_term` order by `id`");
-									while($fetch2=mysql_fetch_array($query2))
-									{$k++;
-										$exam_id=$fetch2['id'];
-										$exam_name=$fetch2['name'];
-									?>
-									<option value="<?php echo $exam_id; ?>"><?php echo $exam_name; ?></option>
-									<?php } ?>
+										<option value="">---Select---</option>
+										<option value="1">Term-I</option>
+										<option value="2">Term-II</option>
+										<option value="3">Overas</option>
 									</select>
 								</div>
 								<span class="help-block">
